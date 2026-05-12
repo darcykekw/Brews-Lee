@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Brand color tokens ──────────────────────────────────────────────── */
+:root {
+  --color-base:   #F9F8F6;
+  --color-subtle: #EFE9E3;
+  --color-muted:  #D9CFC7;
+  --color-accent: #C9B59C;
+  --color-text:   #1C1209;
+  --color-text-muted: #7A6E65;
+}
+
+.dark {
+  --color-base:   #120D08;
+  --color-subtle: #1E1410;
+  --color-muted:  #3A2D24;
+  --color-accent: #C9B59C;
+  --color-text:   #F9F8F6;
+  --color-text-muted: #A89E95;
+}
+
+/* ─── Base layer ─────────────────────────────────────────────────────── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-base);
+    color: #1C1209;
+    @apply font-sans antialiased;
+  }
+
+  .dark body {
+    color: #F9F8F6;
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: #fff;
+  }
+
+  ::-webkit-scrollbar       { width: 5px; }
+  ::-webkit-scrollbar-track { background: var(--color-subtle); }
+  ::-webkit-scrollbar-thumb { background: var(--color-accent); border-radius: 999px; }
+}
+
+/* ─── Utility layer ──────────────────────────────────────────────────── */
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+
+  /* Scroll-triggered reveal animations */
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.65s ease-out, transform 0.65s ease-out;
+  }
+  .animate-on-scroll.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .delay-100 { transition-delay: 100ms; }
+  .delay-200 { transition-delay: 200ms; }
+  .delay-300 { transition-delay: 300ms; }
+  .delay-400 { transition-delay: 400ms; }
+}
